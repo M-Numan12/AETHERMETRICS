@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101d2a">
+  <meta name="description" content="AetherMetrics is an interactive business performance dashboard for tracking revenue, orders and conversion trends.">
+  <title>AetherMetrics | Business analytics dashboard</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">A<span>✦</span></span><div><strong>AetherMetrics</strong><small>BUSINESS INTELLIGENCE</small></div></div>
+      <p class="side-label">WORKSPACE</p>
+      <nav aria-label="Main navigation">
+        <a class="active" href="#overview" aria-current="page"><span>◫</span> Overview</a>
+        <a href="#performance"><span>▥</span> Performance</a>
+        <a href="#transactions"><span>≡</span> Transactions</a>
+      </nav>
+      <div class="side-bottom"><span class="avatar">MN</span><div><strong>Demo workspace</strong><small>Local sample data</small></div></div>
+    </aside>
+    <main id="overview">
+      <header class="topbar"><div class="crumb">Workspace <span>/</span> Overview</div><div class="top-actions"><span class="live"><i></i> Sample data</span><button id="reset" type="button" title="Restore the sample dataset">Reset demo</button></div></header>
+      <section class="heading">
+        <div><p class="eyebrow">PERFORMANCE AT A GLANCE</p><h1>Business overview<span class="spark"> ✳</span></h1><p class="subhead">Understand sales activity and spot what deserves attention.</p></div>
+        <div class="controls"><label for="period">Reporting period</label><select id="period"><option value="30">Last 30 days</option><option value="90">Last 90 days</option><option value="all">All time</option></select><button id="export" type="button">Export CSV <span>↗</span></button></div>
+      </section>
+      <section aria-label="Key performance metrics" class="metrics">
+        <article class="metric"><div class="metric-head"><span>Total revenue</span><b>↗</b></div><strong id="revenue">—</strong><small id="revenue-change">Selected period</small><div class="metric-decoration"></div></article>
+        <article class="metric"><div class="metric-head"><span>Orders</span><b>▤</b></div><strong id="orders">—</strong><small id="orders-change">Selected period</small></article>
+        <article class="metric"><div class="metric-head"><span>Average order</span><b>◎</b></div><strong id="average">—</strong><small>Revenue ÷ paid orders</small></article>
+        <article class="metric"><div class="metric-head"><span>Conversion rate</span><b>✳</b></div><strong id="conversion">—</strong><small>Paid orders ÷ visits</small></article>
+      </section>
+      <div class="dashboard-grid" id="performance">
+        <section class="panel chart-panel"><div class="panel-head"><div><p class="eyebrow">SALES TREND</p><h2>Revenue performance</h2></div><span class="panel-tag">USD · monthly</span></div><div id="chart" class="chart" role="img" aria-label="Monthly revenue bar chart"></div><div id="chart-axis" class="axis"></div></section>
+        <section class="panel channels-panel"><div class="panel-head"><div><p class="eyebrow">ACQUISITION</p><h2>Sales by channel</h2></div></div><div id="channels"></div><p class="muted-note">Channel share is based on paid transactions in the selected period.</p></section>
+      </div>
+      <section class="panel table-panel" id="transactions"><div class="panel-head table-heading"><div><p class="eyebrow">ACTIVITY</p><h2>Recent transactions</h2></div><label class="search-label"><span>⌕</span><input id="search" type="search" placeholder="Search customers or channels" aria-label="Search transactions"></label></div><div class="table-scroll"><table><thead><tr><th>Customer</th><th>Date</th><th>Channel</th><th>Status</th><th class="num">Amount</th></tr></thead><tbody id="rows"></tbody></table></div><p class="table-footer"><span id="count">—</span> · Figures are illustrative demo data. Changes are saved only in this browser.</p></section>
+      <footer>Designed and built by <a href="https://github.com/M-Numan12" target="_blank" rel="noopener noreferrer">Muhammad Numan</a> · AetherMetrics demo</footer>
+    </main>
+  </div>
+  <script src="./app.js" defer></script>
+</body>
+</html>
