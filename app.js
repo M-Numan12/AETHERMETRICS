@@ -12,12 +12,10 @@ const START = [
   {id:11,customer:"Red Fern",date:"2026-06-11",channel:"Referral",amount:620,status:"Paid",visits:57},
   {id:12,customer:"Tidewell",date:"2026-05-03",channel:"Website",amount:1130,status:"Paid",visits:81}
 ];
-const KEY="aethermetrics-demo-v1";
 const $=id=>document.getElementById(id);
 const money=n=>new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}).format(n);
 const today=new Date("2026-09-22T12:00:00Z");
-let data;
-try {const parsed=JSON.parse(localStorage.getItem(KEY));data=Array.isArray(parsed)&&parsed.every(x=>typeof x.amount==="number")?parsed:START;} catch {data=START;}
+const data=START;
 function filtered(){
   const period=$("period").value;
   if(period==="all")return data;
@@ -73,7 +71,7 @@ function render(){
 }
 $("period").addEventListener("change",render);
 $("search").addEventListener("input",render);
-$("reset").addEventListener("click",()=>{data=START;localStorage.setItem(KEY,JSON.stringify(data));$("period").value="30";$("search").value="";render()});
+$("reset").addEventListener("click",()=>{$("period").value="30";$("search").value="";render()});
 $("export").addEventListener("click",()=>{
   const values=[["Customer","Date","Channel","Status","Amount (USD)","Visits"],...filtered().map(x=>[x.customer,x.date,x.channel,x.status,x.amount,x.visits])];
   const csv=values.map(row=>row.map(value=>'"'+String(value).replaceAll('"','""')+'"').join(",")).join("\r\n");
